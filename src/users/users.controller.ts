@@ -8,11 +8,11 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from 'src/Shema/user.schema';
+import { User } from '@schema/user.schema';
 import { PaginateQueryDto } from './dto/paginate-query.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateUserDto } from './dto/create-user.dto';
-import { multerImageOptions } from 'src/common/utils/multer-options';
+import { multerImageOptions } from '@common/utils/multer-options';
 import { unlink } from 'fs/promises';
 
 @Controller('user')

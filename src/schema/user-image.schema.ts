@@ -1,13 +1,13 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import { Document } from 'mongoose';
 import { User } from './user.schema';
 
 @Schema()
 export class UserImage extends Document {
-  @Prop()
-  image: string;
+  @Prop({ required: true })
+  images: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+  @Prop({ type: 'ObjectId', ref: 'User', required: true })
   user: User | string;
 }
 

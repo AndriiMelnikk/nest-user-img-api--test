@@ -12,6 +12,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "seed": "ts-node -r tsconfig-paths/register src/main.ts seed",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -30,8 +31,10 @@
     "@nestjs/serve-static": "^5.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
+    "commander": "^14.0.0",
     "mongoose": "^8.16.3",
     "multer": "^2.0.1",
+    "nestjs-console": "^10.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

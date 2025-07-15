@@ -1,7 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User } from 'src/Shema/user.schema';
+import { User } from '@schema/user.schema';
 import { PaginateQueryDto } from './dto/paginate-query.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 

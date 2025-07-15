@@ -1,6 +1,4 @@
-// src/common/utils/multer-options.ts
 import { diskStorage } from 'multer';
-import { extname } from 'path';
 import { Request } from 'express';
 import { existsSync, mkdirSync } from 'fs';
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
