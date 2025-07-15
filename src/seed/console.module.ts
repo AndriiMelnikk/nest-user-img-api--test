@@ -4,6 +4,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserSeeder } from './user.seeder';
 import { User, UserSchema } from '@schema/user.schema';
 import { UserImage, UserImageSchema } from '@schema/user-image.schema';
+import { UserImageSeeder } from './user-img.seeder';
+import { SeedCommand } from './seed.coomand';
 
 @Module({
   imports: [
@@ -23,6 +25,6 @@ import { UserImage, UserImageSchema } from '@schema/user-image.schema';
     ]),
   ],
   controllers: [],
-  providers: [UserSeeder],
+  providers: [UserSeeder, UserImageSeeder, SeedCommand],
 })
 export class ConsoleAppModule {}

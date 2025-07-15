@@ -10,4 +10,6 @@ export class User {
   city: string;
 }
 
+export type UserDocument = User & Document;
+
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -1,13 +1,13 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User } from '@schema/user.schema';
+import { User, UserDocument } from '@schema/user.schema';
 import { PaginateQueryDto } from './dto/paginate-query.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userShema: Model<User>) {}
+  constructor(@InjectModel(User.name) private userShema: Model<UserDocument>) {}
 
   async findAll(query: PaginateQueryDto) {
     try {

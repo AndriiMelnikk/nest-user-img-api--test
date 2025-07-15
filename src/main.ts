@@ -3,14 +3,16 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { FileCleanupExceptionFilter } from '@common/utils/file-cleanup-exception.filter';
 import { ConsoleAppModule } from './seed/console.module';
-import { UserSeeder } from './seed/user.seeder';
+import { SeedCommand } from './seed/seed.coomand';
 
 async function bootstrap() {
   if (process.argv.includes('seed')) {
     const app = await NestFactory.createApplicationContext(ConsoleAppModule);
-    const userSeeder = app.get(UserSeeder);
 
-    await userSeeder.seed();
+    const seedCommand = app.get(SeedCommand);
+
+    await seedCommand.seed();
+
     await app.close();
     return;
   }
