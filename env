@@ -1,0 +1,2 @@
+PORT=3000
+MONGO_URL=mongodb+srv://andrii:tymjew-2qItdo-pidreg@user-1.ipbccci.mongodb.net/user-images-api?retryWrites=true&w=majority&appName=user-1
