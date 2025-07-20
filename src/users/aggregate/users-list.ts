@@ -1,16 +1,10 @@
 import { Model } from 'mongoose';
 import { UserDocument } from '@schema/user.schema';
-
-type UserWithImageCount = {
-  _id: any;
-  name: string;
-  city: string;
-  imageCount: number;
-};
+import { UserWithImageCount } from '@users/type';
 
 type Props = (
   userShema: Model<UserDocument>,
-  params: { limit: number; skip: number }
+  params: { limit: number; skip: number },
 ) => Promise<UserWithImageCount[]>;
 
 const userList: Props = async (userShema, { skip, limit }) => {
@@ -29,6 +23,9 @@ const userList: Props = async (userShema, { skip, limit }) => {
       },
     },
     {
+      $sort: { imageCount: -1 },
+    },
+    {
       $project: {
         name: 1,
         city: 1,
@@ -42,5 +39,4 @@ const userList: Props = async (userShema, { skip, limit }) => {
   return data;
 };
 
-
-export default userList
+export default userList;

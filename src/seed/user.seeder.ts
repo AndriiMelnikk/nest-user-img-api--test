@@ -20,6 +20,7 @@ export class UserSeeder {
       users.push({
         name: `${faker.person.firstName()} ${faker.person.lastName()}`,
         city: faker.location.city(),
+          imageCount: 0,
       });
     }
 
