@@ -4,7 +4,6 @@ import { Model } from 'mongoose';
 import { User, UserDocument } from '@schema/user.schema';
 import { PaginateQueryDto } from './dto/paginate-query.dto';
 import { CreateUserDto } from './dto/create-user.dto';
-import userList from './aggregate/users-list';
 import { UserWithImageCount } from './type';
 import { UserImage, UserImageDocument } from '@schema/user-image.schema';
 import { readdir, rename, unlink } from 'fs/promises';
@@ -25,9 +24,14 @@ export class UsersService {
   }: PaginateQueryDto): Promise<UserWithImageCount[]> {
     try {
       const skip = (page - 1) * limit;
-      const data = await userList(this.userShema, { skip, limit });
 
-      return data;
+      return this.userShema
+        .find()
+        .sort({ imageCount: -1 })
+        .skip(skip)
+        .limit(limit)
+        .exec();
+
     } catch (error) {
       throw new InternalServerErrorException(
         'Помилка при отримані користувачів',
