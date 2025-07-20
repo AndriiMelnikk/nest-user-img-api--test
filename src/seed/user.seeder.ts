@@ -6,6 +6,7 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class UserSeeder {
+  private readonly userLenght = 10000;
   constructor(
     @InjectModel(User.name)
     private readonly userModel: Model<UserDocument>,
@@ -16,16 +17,17 @@ export class UserSeeder {
 
     const users: User[] = [];
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < this.userLenght; i++) {
       users.push({
         name: `${faker.person.firstName()} ${faker.person.lastName()}`,
         city: faker.location.city(),
+        imageCount: 0,
       });
     }
 
     try {
       const createdUsers = await this.userModel.insertMany(users);
-      console.log('Seeded 10,000 users successfully');
+      console.log(`Додано ${this.userLenght} користувачів`);
       return createdUsers;
     } catch (error) {
       console.error('Error seeding users:', error);

@@ -8,6 +8,9 @@ export class User {
 
   @Prop({ required: true })
   city: string;
+
+  @Prop({ default: 0 })
+  imageCount: number;
 }
 
 export type UserDocument = User & Document;

@@ -17,7 +17,7 @@ export function imageFileFilter(
   file: Express.Multer.File,
   cb: (error: Error | null, acceptFile: boolean) => void,
 ) {
-  if (!file.mimetype.match(/\/(jpg|jpeg|png|gif)$/)) {
+  if (!file.mimetype.match(/\/(jpg|jpeg|png|gif|webp)$/)) {
     return cb(new Error('Тільки зображення!'), false);
   }
   cb(null, true);

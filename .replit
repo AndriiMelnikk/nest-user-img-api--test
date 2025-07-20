@@ -1,0 +1,21 @@
+modules = ["nodejs-20"]
+
+[workflows]
+runButton = "Start NestJS"
+
+[[workflows.workflow]]
+name = "Start NestJS"
+author = 45214972
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run start:dev"
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
