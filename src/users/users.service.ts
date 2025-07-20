@@ -11,7 +11,10 @@ export class UsersService {
 
   async findAll(query: PaginateQueryDto) {
     try {
-      return [];
+      const users = await this.userShema.find().exec();
+
+      console.log(users);
+      return users;
     } catch (error) {
       throw new InternalServerErrorException(
         'Помилка при отримані користувачів',

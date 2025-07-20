@@ -20,6 +20,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new FileCleanupExceptionFilter());
 
+  app.enableCors({
+    allowedHeaders: '*',
+    origin: '*',
+    credentials: true,
+  });
+
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
