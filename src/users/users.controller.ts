@@ -17,11 +17,18 @@ import { unlink } from 'fs/promises';
 
 @Controller('user')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService
+  ) {}
 
   @Get()
-  findAll(@Query() query: PaginateQueryDto): Promise<User[]> {
+  async findAll(@Query() query: PaginateQueryDto): Promise<User[]> {
     return this.usersService.findAll(query);
+  }
+
+  @Get('count')
+  async getUsersCount(): Promise<number>{
+    return this.usersService.getUsersCount();
   }
 
   @Post()

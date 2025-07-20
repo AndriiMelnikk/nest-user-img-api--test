@@ -16,7 +16,7 @@ export class UserSeeder {
 
     const users: User[] = [];
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 20; i++) {
       users.push({
         name: `${faker.person.firstName()} ${faker.person.lastName()}`,
         city: faker.location.city(),
