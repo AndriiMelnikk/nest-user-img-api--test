@@ -15,12 +15,16 @@ import { join } from 'path';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    ...(process.env.MONGO_URL ? [MongooseModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        uri: config.get<string>('MONGO_URL', { infer: true }),
-      }),
-    })] : []),
+    ...(process.env.MONGO_URL
+      ? [
+          MongooseModule.forRootAsync({
+            inject: [ConfigService],
+            useFactory: (config: ConfigService) => ({
+              uri: config.get<string>('MONGO_URL', { infer: true }),
+            }),
+          }),
+        ]
+      : []),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
       serveRoot: '/uploads',
